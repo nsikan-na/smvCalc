@@ -40,6 +40,16 @@ function App() {
   return (
     <>
       <h1>Calculate your Sexual Market Value</h1>
+      <iframe
+        width="600"
+        height="350"
+        src="https://www.youtube.com/embed/kZqNkkX7oeE"
+      ></iframe>
+      <br />
+      <br />
+      <img src="/calc-smv.png" height="350" />
+      <br />
+      <img src="/face.png" height="350" />
       <div style={{ margin: "1rem" }}>
         <label style={{ marginRight: "1rem" }}>Face:</label>
         <input
@@ -51,6 +61,7 @@ function App() {
           value={face}
         ></input>
       </div>
+      <img src="/height.png" height="450" />
       <div style={{ margin: "1rem" }}>
         <label style={{ marginRight: "1rem" }}>Height:</label>
         <input
@@ -62,6 +73,11 @@ function App() {
           value={height}
         ></input>
       </div>
+      <img src="/bmi.png" height="350" />
+      <br />
+      <img src="/body1.png" height="350" />
+      <br />
+      <img src="/bmi2.png" height="350" />
       <div style={{ margin: "1rem" }}>
         <label style={{ marginRight: "1rem" }}>Body:</label>
         <input
@@ -73,6 +89,7 @@ function App() {
           value={body}
         ></input>
       </div>
+      <img src="/money.png" height="350" />
       <div style={{ margin: "1rem" }}>
         <label style={{ marginRight: "1rem" }}>Money:</label>
         <input
@@ -84,6 +101,7 @@ function App() {
           value={money}
         ></input>
       </div>
+      <img src="/p.png" height="350" />
       <div style={{ margin: "1rem" }}>
         <label style={{ marginRight: "1rem" }}>P:</label>
         <input
@@ -95,6 +113,7 @@ function App() {
           value={p}
         ></input>
       </div>
+      <img src="/iq.png" height="350" />
       <div style={{ margin: "1rem" }}>
         <label style={{ marginRight: "1rem" }}>IQ:</label>
         <input
@@ -106,6 +125,7 @@ function App() {
           value={iq}
         ></input>
       </div>
+      <img src="/race.png" height="350" />
       <div style={{ margin: "1rem" }}>
         <label style={{ marginRight: "1rem" }}>Race:</label>
         <input
@@ -117,6 +137,7 @@ function App() {
           value={race}
         ></input>
       </div>
+      <img src="/location.png" height="350" />
       <div style={{ margin: "1rem" }}>
         <label style={{ marginRight: "1rem" }}>Location:</label>
         <input
@@ -129,7 +150,12 @@ function App() {
         ></input>
       </div>
       <button onClick={calculateSMV}>Calculate SMV</button>
-      <div>{smv}</div>
+      <br />
+      <br />
+      <img src="smv.png" height="350" />
+      <h2 style={{ margin: "1rem" }}>
+        {smv?.toFixed(2) ? smv?.toFixed(2) + "%" : ""}
+      </h2>
     </>
   );
 }

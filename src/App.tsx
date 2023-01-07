@@ -153,9 +153,7 @@ function App() {
       <br />
       <br />
       <img src="smv.png" height="350" />
-      <h2 style={{ margin: "1rem" }}>
-        {smv?.toFixed(2) ? smv?.toFixed(2) + "%" : ""}
-      </h2>
+      <h2 style={{ margin: "1rem" }}>{smv?.toFixed(2)}</h2>
     </>
   );
 }

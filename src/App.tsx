@@ -2,15 +2,26 @@ import { useEffect, useState } from "react";
 import "./App.css";
 
 function App() {
-  const [face, setFace] = useState<number>();
-  const [height, setHeight] = useState<number>();
-  const [body, setBody] = useState<number>();
-  const [money, setMoney] = useState<number>();
-  const [p, setP] = useState<number>();
-  const [iq, setIq] = useState<number>();
-  const [smv, setSMV] = useState<number>();
-  const [race, setRace] = useState<number>();
-  const [location, setLocation] = useState<number>();
+  const FACE = 5;
+  const HEIGHT = 3;
+  const BODY = 2;
+  const MONEY = 2;
+  const P = 2;
+  const IQ = 1;
+  const eightOptions = [
+    1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8,
+  ];
+  const raceOptions = [-1, 0, 0.5];
+  const locationOption = [-1, 0.5, 1];
+  const [face, setFace] = useState<any>();
+  const [height, setHeight] = useState<any>();
+  const [body, setBody] = useState<any>();
+  const [money, setMoney] = useState<any>();
+  const [p, setP] = useState<any>();
+  const [iq, setIq] = useState<any>();
+  const [smv, setSMV] = useState<any>();
+  const [race, setRace] = useState<any>();
+  const [location, setLocation] = useState<any>();
   const calculateSMV = () => {
     if (
       !face ||
@@ -23,19 +34,33 @@ function App() {
       !location
     )
       return;
+
     setSMV(
-      Math.pow(
-        Math.pow(face, 5) *
-          Math.pow(height, 3) *
-          Math.pow(body, 2) *
-          Math.pow(money, 2) *
-          Math.pow(p, 2) *
-          Math.pow(iq, 1),
-        1 / 13
-      ) +
-        race +
-        location
+      (
+        Math.pow(
+          Math.pow(+face, FACE) *
+            Math.pow(+height, HEIGHT) *
+            Math.pow(+body, BODY) *
+            Math.pow(+money, MONEY) *
+            Math.pow(+p, P) *
+            Math.pow(+iq, IQ),
+          1 / 13
+        ) +
+        +race +
+        +location
+      ).toFixed(2)
     );
+  };
+  useEffect(() => {
+    console.log(smv);
+  }, [smv]);
+  const renderOptions = () => {
+    return eightOptions.map((x) => (
+      <>
+        <option hidden></option>
+        <option>{x}</option>
+      </>
+    ));
   };
   return (
     <>
@@ -52,26 +77,28 @@ function App() {
       <img src="/face.png" height="350" />
       <div style={{ margin: "1rem" }}>
         <label style={{ marginRight: "1rem" }}>Face:</label>
-        <input
-          type="number"
+        <select
           style={{ padding: ".25rem" }}
           onChange={(e) => {
-            setFace(+e.target.value);
+            setFace(e.target.value);
           }}
           value={face}
-        ></input>
+        >
+          {renderOptions()}
+        </select>
       </div>
       <img src="/height.png" height="450" />
       <div style={{ margin: "1rem" }}>
         <label style={{ marginRight: "1rem" }}>Height:</label>
-        <input
-          type="number"
+        <select
           style={{ padding: ".25rem" }}
           onChange={(e) => {
-            setHeight(+e.target.value);
+            setHeight(e.target.value);
           }}
           value={height}
-        ></input>
+        >
+          {renderOptions()}
+        </select>
       </div>
       <img src="/bmi.png" height="350" />
       <br />
@@ -80,80 +107,92 @@ function App() {
       <img src="/bmi2.png" height="350" />
       <div style={{ margin: "1rem" }}>
         <label style={{ marginRight: "1rem" }}>Body:</label>
-        <input
-          type="number"
+        <select
           style={{ padding: ".25rem" }}
           onChange={(e) => {
-            setBody(+e.target.value);
+            setBody(e.target.value);
           }}
           value={body}
-        ></input>
+        >
+          {renderOptions()}
+        </select>
       </div>
       <img src="/money.png" height="350" />
       <div style={{ margin: "1rem" }}>
         <label style={{ marginRight: "1rem" }}>Money:</label>
-        <input
-          type="number"
+        <select
           style={{ padding: ".25rem" }}
           onChange={(e) => {
-            setMoney(+e.target.value);
+            setMoney(e.target.value);
           }}
           value={money}
-        ></input>
+        >
+          {renderOptions()}
+        </select>
       </div>
       <img src="/p.png" height="350" />
       <div style={{ margin: "1rem" }}>
         <label style={{ marginRight: "1rem" }}>P:</label>
-        <input
-          type="number"
+        <select
           style={{ padding: ".25rem" }}
           onChange={(e) => {
-            setP(+e.target.value);
+            setP(e.target.value);
           }}
           value={p}
-        ></input>
+        >
+          {renderOptions()}
+        </select>
       </div>
       <img src="/iq.png" height="350" />
       <div style={{ margin: "1rem" }}>
         <label style={{ marginRight: "1rem" }}>IQ:</label>
-        <input
-          type="number"
+        <select
           style={{ padding: ".25rem" }}
           onChange={(e) => {
-            setIq(+e.target.value);
+            setIq(e.target.value);
           }}
           value={iq}
-        ></input>
+        >
+          {renderOptions()}
+        </select>
       </div>
       <img src="/race.png" height="350" />
       <div style={{ margin: "1rem" }}>
         <label style={{ marginRight: "1rem" }}>Race:</label>
-        <input
-          type="number"
+        <select
           style={{ padding: ".25rem" }}
           onChange={(e) => {
-            setRace(+e.target.value);
+            setRace(e.target.value);
           }}
           value={race}
-        ></input>
+        >
+          <option hidden></option>
+          {raceOptions.map((x) => (
+            <option>{x}</option>
+          ))}
+        </select>
       </div>
       <img src="/location.png" height="350" />
       <div style={{ margin: "1rem" }}>
         <label style={{ marginRight: "1rem" }}>Location:</label>
-        <input
-          type="number"
+        <select
           style={{ padding: ".25rem" }}
           onChange={(e) => {
-            setLocation(+e.target.value);
+            setLocation(e.target.value);
           }}
           value={location}
-        ></input>
+        >
+          <option hidden></option>
+          {locationOption.map((x) => (
+            <option>{x}</option>
+          ))}
+        </select>
       </div>
       <button onClick={calculateSMV}>Calculate SMV</button>
       <br />
       <br />
       <img src="smv.png" height="350" />
-      <h2 style={{ margin: "1rem" }}>{smv?.toFixed(2)}</h2>
+      <h2 style={{ margin: "1rem" }}>{smv}</h2>
     </>
   );
 }
